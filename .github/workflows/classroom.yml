@@ -29,8 +29,6 @@ jobs:
         test-name: run
         setup-command: ''
         command: "./lab09"
-        input: ''
-        expected-output:
         timeout: 10
         max-score: 10
     - name: Autograding Reporter
