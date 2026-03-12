@@ -14,6 +14,8 @@ class ArrayStack : public Stack<T> {
         // the maximum number of elements in the stack
         int maxSize;
 
+        int length; // length of stack
+
         // copy the state of the argument stack to `this`
         void copy(const ArrayStack<T>&);
 
