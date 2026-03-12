@@ -82,7 +82,7 @@ T ArrayStack<T>::peek() const {
 template <typename T>
 void ArrayStack<T>::pop() {
     if(this->length < 0){
-        throw string("No Elements");
+        throw string("Underflow");
     }
     this->length --;
     // TODO
@@ -92,7 +92,7 @@ template <typename T>
 void ArrayStack<T>::push(const T& elem) {
     // TODO
     if(this->length+1 >= maxSize){
-        throw string("Too Many Elements");
+        throw string("Overflow");
     }
     this->length++;
     buffer[this->length] = elem;

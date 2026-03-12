@@ -26,6 +26,15 @@ int main() {
 
     ArrayStack<int> copy(stack);
     cout << "Copy: " << copy << endl;
+    try {
+        for (int i = 0; i < 10; i++) {
+            copy.pop();
+        }
+        cout << "Top element: " << copy.peek() << endl;
+    }
+    catch (const string& e) {
+        cout << "Exception caught: " << e << endl;
+    }
 
     stack.clear();
 
