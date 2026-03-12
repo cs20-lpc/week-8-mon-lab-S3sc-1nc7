@@ -28,7 +28,7 @@ jobs:
       with:
         test-name: run
         setup-command: ''
-        expected-output: "Overflow" "Underflow" "length" "Stack"
+        expected-output: "Overflow Underflow length Stack"
         comparison-method: contains
         command: "./lab09"
         timeout: 10
