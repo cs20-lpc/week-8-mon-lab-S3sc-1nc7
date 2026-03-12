@@ -8,7 +8,7 @@ ArrayStack<T>::ArrayStack(int i) {
     }
 
     buffer = new T[maxSize];  // allocate array of T
-    length = -1;
+    this->length = -1;
 }
 
 template <typename T>
@@ -41,11 +41,11 @@ template <typename T>
 void ArrayStack<T>::copy(const ArrayStack<T>& copyObj) {
     // TODO
     maxSize = copyObj.maxSize;
-    length = copyObj.length;
+    this->length = copyObj.length;
 
     buffer = new T[maxSize];
 
-    for (int i = 0; i <= length; i++){
+    for (int i = 0; i <= this->length; i++){
         buffer[i] = copyObj.buffer[i];
     }
 }
@@ -72,52 +72,52 @@ bool ArrayStack<T>::isFull() const {
 
 template <typename T>
 T ArrayStack<T>::peek() const {
-    if(length < 0){
-        throw "No Elements";
+    if(this->length < 0){
+        throw string("No Elements");
     }
-    return buffer[length];
+    return buffer[this->length];
     // TODO
 }
 
 template <typename T>
 void ArrayStack<T>::pop() {
-    if(length < 0){
-        throw "No Elements";
+    if(this->length < 0){
+        throw string("No Elements");
     }
-    length --;
+    this->length --;
     // TODO
 }
 
 template <typename T>
 void ArrayStack<T>::push(const T& elem) {
     // TODO
-    if(length+1 > maxSize){
-        throw "Too Many Elements";
+    if(this->length+1 >= maxSize){
+        throw string("Too Many Elements");
     }
-    length++;
-    buffer[length] = elem;
+    this->length++;
+    buffer[this->length] = elem;
 
 }
 
 template <typename T>
 void ArrayStack<T>::rotate(typename Stack<T>::Direction dir) {
     // TODO
-    if (length < 0){
-       throw "No Elements";
+    if (this->length < 0){
+       throw string("No Elements");
     }
-    if (length == 0){
+    if (this->length == 0){
         return;
     }
     if (dir == Stack<T>::LEFT){
         T temp = buffer[0];
-        for (int i = 0; i < length; i++){
+        for (int i = 0; i < this->length; i++){
             buffer[i] = buffer[i+1];
         }
-        buffer[length] = temp;
+        buffer[this->length] = temp;
     }
     else{
-        T temp = buffer[length];
-        for (int i = length; i > 0; i--){
+        T temp = buffer[this->length];
+        for (int i = this->length; i > 0; i--){
             buffer[i] = buffer[i-1];
         }
         buffer[0] = temp;

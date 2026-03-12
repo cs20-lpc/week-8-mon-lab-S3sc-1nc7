@@ -29,7 +29,7 @@ int main() {
 
     stack.clear();
 
-    ArrayStack<string> strings(5);
+    ArrayStack<string> strings(15);
     // push values
     strings.push("10hello");
     strings.push("tested");
@@ -44,7 +44,7 @@ int main() {
         }
         cout << "Top element: " << strings.peek() << endl;
     }
-    catch (const char* e) {
+    catch (const string& e) {
         cout << "Exception caught: " << e << endl;
     }
 
