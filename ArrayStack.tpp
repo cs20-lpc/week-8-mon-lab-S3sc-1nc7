@@ -1,6 +1,14 @@
 template <typename T>
 ArrayStack<T>::ArrayStack(int i) {
     // TODO
+    if (i <= 0) {
+        maxSize = 1;
+    } else {
+        maxSize = i;
+    }
+
+    buffer = new T[maxSize];  // allocate array of T
+    top = -1;
 }
 
 template <typename T>
@@ -25,11 +33,21 @@ ArrayStack<T>::~ArrayStack() {
 template <typename T>
 void ArrayStack<T>::clear() {
     // TODO
+    delete[] buffer;
+    buffer = nullptr;
 }
 
 template <typename T>
 void ArrayStack<T>::copy(const ArrayStack<T>& copyObj) {
     // TODO
+    maxSize = copyObj.maxSize;
+    top = copyObj.top;
+    
+    buffer = new T[Capacity];
+
+    for (unsigned int i = 0; i <= top; i++){
+        buffer[i] = copyObj[i]
+    }
 }
 
 template <typename T>
@@ -54,22 +72,56 @@ bool ArrayStack<T>::isFull() const {
 
 template <typename T>
 T ArrayStack<T>::peek() const {
+    if(top < 0){
+        throw "No Elements";
+    }
+    return buffer[top];
     // TODO
 }
 
 template <typename T>
 void ArrayStack<T>::pop() {
+    if(top < 0){
+        throw "No Elements";
+    }
+    top --;
     // TODO
 }
 
 template <typename T>
 void ArrayStack<T>::push(const T& elem) {
     // TODO
+    if(top+1 > maxSize){
+        throw "Too Many Elements";
+    }
+    top++;
+    buffer[top] = elem;
+
 }
 
 template <typename T>
 void ArrayStack<T>::rotate(typename Stack<T>::Direction dir) {
     // TODO
+    if (top < 0){
+       throw "No Elements";
+    }
+    if (top == 0){
+        return;
+    }
+    if (dir == Stack<T>::LEFT){
+        T temp = buffer[0];
+        for (unsigned int i = 0; i < top; i++){
+            buffer[i] = buffer[i+1];
+        }
+        buffer[top] = temp;
+    }
+    else{
+        T temp = buffer[top];
+        for (unsigned int i = top; i > 0; i--){
+            buffer[i] = buffer[i-1];
+        }
+        buffer[0] = temp;
+    }
 }
 
 template <typename T>
